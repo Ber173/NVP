@@ -25,29 +25,25 @@ void printArray(vector<ll>a) {
     cout << endl;
 }
 
-void Insertsort(vector <ll> &a)
+void Selectionsort(vector <ll> &a)
 {
-    for(int i = 1; i < n; i++)
+    for(int i = 0; i < n; i++)
     {
-        int j = i - 1;
-        int key = a[i];
-
-        while (j >= 0 && a[j] > key) {
-            a[j + 1] = a[j];
-            j--;
-        printArray(a);
-        }
-        a[j + 1] = key;
-        printArray(a);
+       int minn = i;
+       for(int j = i + 1; j < n; j++){
+            if(a[j] < a[minn]) minn = j;
+       }
+       if(i != minn){
+           swap(a[i], a[minn]);
+         printArray(a);
+       }
     }    
-
-    
 }
 
 void solve()
 {
     input();
-    Insertsort(ar);
+    Selectionsort(ar);
 }
 
 int main()
